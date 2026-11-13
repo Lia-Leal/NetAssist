@@ -1,0 +1,1 @@
+NA.init({ pub: 'solid' });

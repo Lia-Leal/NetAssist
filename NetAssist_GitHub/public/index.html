@@ -1,0 +1,289 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#112b63">
+  
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+  <title>NetAssist: A Web-Based Network Troubleshooting and Diagnostic System</title>
+  <link rel="stylesheet" href="/css/popup.css">
+  <link rel="stylesheet" href="/css/readiness.css">
+</head>
+
+<body>
+
+<header id="nav"></header>
+
+<main>
+
+  <!-- Existing homepage -->
+  <section class="hero">
+    <div class="vbg" style="background-image:url(/media/bg-poster.jpg)">
+      <video autoplay muted loop playsinline preload="auto"
+        poster="/media/bg-poster.jpg" aria-hidden="true">
+        <source src="/media/bg.webm" type="video/webm">
+        <source src="/media/bg.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="wrap">
+      <div>
+        <span class="tag" id="tag"></span>
+        <div class="eyebrow">Network troubleshooting assistant</div>
+
+        <h1>
+          Diagnose. Understand.
+          <span class="grad-text"
+            style="background:linear-gradient(90deg,#a78bfa,#67e8f9);-webkit-background-clip:text;background-clip:text">
+            Fix.
+          </span>
+        </h1>
+
+        <p class="lead">
+          Pick the problem you are seeing. NetAssist runs safe diagnostic
+          tests, explains what the results mean in plain language,
+          and tells you what to try next, step by step.
+        </p>
+
+        <div class="cta">
+          <a class="btn btn-grad" href="/register">
+            Start troubleshooting
+          </a>
+          <a class="btn btn-glass" href="/login?demo=1">
+            Try the demo account
+          </a>
+        </div>
+      </div>
+
+      <div class="glass term" role="img"
+        aria-label="Example of a NetAssist diagnosis">
+
+        <div class="bar"><i></i><i></i><i></i></div>
+
+        <div class="l">
+          <span>Network adapter</span>
+          <span class="p">PASS</span>
+        </div>
+
+        <div class="l">
+          <span>Router / gateway</span>
+          <span class="p">PASS 2 ms</span>
+        </div>
+
+        <div class="l">
+          <span>Internet by IP</span>
+          <span class="f">FAIL 100% loss</span>
+        </div>
+
+        <div class="l">
+          <span>DNS lookup</span>
+          <span class="f">FAIL</span>
+        </div>
+
+        <div class="l">
+          <span class="d">Rule matched:</span>
+          <span class="w">router OK, internet down</span>
+        </div>
+
+        <div class="vd">
+          Your router works, but nothing gets past it. Restart the modem,
+          check its Internet light, then call your ISP if it stays red.
+          <span class="cursor"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Existing problem selection -->
+  <section class="band alt" id="problems">
+    <div class="wrap">
+      <div class="page-head">
+        <div class="eyebrow">What it checks</div>
+        <h2>Six common problems, one guided flow</h2>
+        <p>
+          Each check runs only the tests that matter for that problem,
+          so results stay clear and fast.
+        </p>
+      </div>
+
+      <div class="grid g3" id="problem-grid"></div>
+    </div>
+  </section>
+
+  <!-- NEW: Network Readiness Check -->
+  <section class="readiness" id="readiness">
+    <div class="wrap">
+      <div class="readiness-card">
+
+        <div>
+          <div class="eyebrow">Before you begin</div>
+
+          <h2>Network Readiness Check</h2>
+
+          <p class="muted">
+            A quick self-check to help you prepare for troubleshooting.
+            Mark the items you have already checked.
+          </p>
+
+          <div class="readiness-checklist">
+
+            <label class="readiness-item">
+              <input type="checkbox" class="readiness-input">
+              <span>
+                Check the Wi-Fi connection
+                <small>Make sure your device is connected to Wi-Fi.</small>
+              </span>
+            </label>
+
+            <label class="readiness-item">
+              <input type="checkbox" class="readiness-input">
+              <span>
+                Check the router lights
+                <small>Look for unusual warning lights on your router.</small>
+              </span>
+            </label>
+
+            <label class="readiness-item">
+              <input type="checkbox" class="readiness-input">
+              <span>
+                Check another website
+                <small>See if the problem happens on other websites too.</small>
+              </span>
+            </label>
+
+            <label class="readiness-item">
+              <input type="checkbox" class="readiness-input">
+              <span>
+                Check another device
+                <small>Find out if other devices have the same problem.</small>
+              </span>
+            </label>
+
+          </div>
+
+          <div class="readiness-actions">
+            <a href="/register" class="btn btn-grad">
+              Start troubleshooting
+            </a>
+
+            <button type="button" class="btn btn-ghost"
+              id="readiness-reset">
+              Reset checklist
+            </button>
+          </div>
+        </div>
+
+        <div class="readiness-visual"
+          aria-label="Checklist completion progress">
+
+          <div class="readiness-ring" id="readiness-ring">
+            <div class="readiness-score">
+              <strong id="readiness-count">0/4</strong>
+              <small>Checks completed</small>
+            </div>
+          </div>
+
+          <div class="readiness-status" aria-live="polite">
+            <strong id="readiness-message">Ready when you are</strong>
+            <div id="readiness-description">
+              Complete the checklist to get started.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Existing how it works section -->
+  <section class="band" id="how">
+    <div class="wrap grid g2" style="align-items:center;gap:40px">
+
+      <div>
+        <div class="eyebrow">How it works</div>
+        <h2>From "it is not working" to a next step</h2>
+
+        <ol class="steps-list">
+          <li>
+            <div>
+              <h3>Choose your problem</h3>
+              <p class="muted">
+                No technical words needed. Pick what you are experiencing.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div>
+              <h3>Watch the tests run</h3>
+              <p class="muted">
+                Adapter, router, internet, DNS, and more, live on screen.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div>
+              <h3>Read the explanation</h3>
+              <p class="muted">
+                Rules turn raw numbers into a plain-language cause
+                and a short list of fixes.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div>
+              <h3>Fix, re-test, compare</h3>
+              <p class="muted">
+                See a before and after. Every report is saved to your
+                history and analytics.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="pico" style="margin-bottom:10px"
+            data-i="users"></div>
+          <h3>Built for beginners</h3>
+          <p class="muted" style="margin:0">
+            Made for students and everyday users with limited networking
+            knowledge. Every result explains itself.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="pico" style="margin-bottom:10px"
+            data-i="shield"></div>
+          <h3>Safe by design</h3>
+          <p class="muted" style="margin:0">
+            NetAssist only reads and measures. It never changes your
+            network settings and is not a replacement for Wireshark
+            or Packet Tracer.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer id="footer"></footer>
+
+<script src="/js/app.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/autopup.js"></script>
+<script src="/js/readiness.js"></script>
+
+</body>
+</html>

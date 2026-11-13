@@ -1,0 +1,175 @@
+/* Network Readiness Check (feature by teammate) */
+
+    .readiness {
+      padding: 64px 0;
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(34,211,238,.10),
+          transparent 35%
+        ),
+        var(--bg);
+    }
+
+    .readiness-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      padding: clamp(24px, 4vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .readiness-checklist {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .readiness-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-2);
+      cursor: pointer;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .readiness-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .readiness-item input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      flex: none;
+    }
+
+    .readiness-item span {
+      font-weight: 600;
+      font-size: .92rem;
+    }
+
+    .readiness-item small {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .readiness-visual {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+      overflow: hidden;
+      border-radius: 20px;
+      background:
+        radial-gradient(
+          circle,
+          rgba(124,77,255,.18),
+          transparent 65%
+        ),
+        var(--surface-2);
+    }
+
+    .readiness-ring {
+      width: 210px;
+      height: 210px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--primary) 0deg,
+        var(--cyan) 0deg,
+        var(--line) 0deg
+      );
+      transition: background .35s ease;
+    }
+
+    .readiness-ring::before {
+      content: "";
+      position: absolute;
+      width: 178px;
+      height: 178px;
+      border-radius: 50%;
+      background: var(--surface);
+    }
+
+    .readiness-score {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .readiness-score strong {
+      display: block;
+      font-size: 2.8rem;
+      line-height: 1.1;
+    }
+
+    .readiness-score small {
+      color: var(--muted);
+    }
+
+    .readiness-status {
+      position: absolute;
+      bottom: 24px;
+      left: 12px;
+      right: 12px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .readiness-status strong {
+      color: var(--ink);
+    }
+
+    .readiness-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 760px) {
+      .readiness-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .readiness-visual {
+        min-height: 260px;
+      }
+
+      .readiness-ring {
+        width: 180px;
+        height: 180px;
+      }
+
+      .readiness-ring::before {
+        width: 152px;
+        height: 152px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .readiness-item,
+      .readiness-ring {
+        transition: none;
+      }
+    }
+  
+/* keep the status text clear of the ring */
+.readiness-visual { min-height: 340px; padding-bottom: 76px; }
+.readiness-ring { margin-top: -34px; }
+@media (max-width: 760px) { .readiness-visual { min-height: 300px; } }

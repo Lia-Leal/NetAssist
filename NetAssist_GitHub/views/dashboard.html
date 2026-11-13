@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#112b63"><script src="/js/theme.js"></script><link rel="stylesheet" href="/css/style.css"><link rel="icon" type="image/png" href="/img/favicon.png"><link rel="apple-touch-icon" href="/img/apple-touch-icon.png"><title>Dashboard | NetAssist</title></head>
+<body>
+<header id="nav"></header>
+<main>
+
+<div class="wrap page">
+  <div class="page-head row between"><div><h1 id="hello">Hello!</h1><p>Here is a summary of your network diagnostics.</p></div><a class="btn btn-grad" href="/diagnose" id="run"></a></div>
+  <div class="stats" id="stats"><div class="skeleton" style="height:92px"></div><div class="skeleton" style="height:92px"></div><div class="skeleton" style="height:92px"></div><div class="skeleton" style="height:92px"></div></div>
+  <div class="split even" style="margin-top:16px">
+    <div class="card"><h3>Common issues</h3><div id="common"></div></div>
+    <div class="card"><div class="row between" style="margin-bottom:8px"><h3 style="margin:0">Recent activity</h3><a href="/history">View all</a></div><div id="recent"></div></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>Start a check</h3><div class="grid" id="quick" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))"></div></div>
+</div>
+</main>
+<footer id="footer"></footer>
+<script src="/js/app.js"></script>
+<script src="/js/dashboard.js"></script>
+</body></html>
