@@ -110,9 +110,16 @@ const NA = (() => {
     nav.className = 'pubnav' + (overVideo ? '' : ' solid');
     const right = user ? `<a class="btn btn-grad btn-sm" href="/dashboard">Open dashboard</a>` : `<a class="btn ${overVideo ? 'btn-glass' : 'btn-ghost'} btn-sm" href="/login">Log in</a><a class="btn btn-grad btn-sm" href="/register">Sign up</a>`;
     nav.innerHTML = `<div class="wrap"><a class="brand" href="/"><img src="/img/logo-icon.png" alt="">NetAssist</a>
-      <nav class="links" aria-label="Main"><a href="/">Home</a><a href="/#problems">What it checks</a><a href="/#how">How it works</a><a href="/contact">Contact</a></nav>
-      <div class="right">${right}${themeToggle('theme')}</div></div>`;
+      <nav class="links" id="pub-links" aria-label="Main"><a href="/">Home</a><a href="/#problems">What it checks</a><a href="/#how">How it works</a><a href="/contact">Contact</a>${user ? '' : '<a class="m-only" href="/login">Log in</a>'}</nav>
+      <div class="right">${right}${themeToggle('theme')}<button class="icon-btn pub-menu-btn" id="pub-menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="pub-links">${icon('menu')}</button></div></div>`;
     wireTheme('theme'); renderFooter();
+    // Mobile menu: the links become a dropdown panel at 900px and below.
+    const pubMenu = $('#pub-menu');
+    const setMenuOpen = (open) => { nav.classList.toggle('open', open); pubMenu.setAttribute('aria-expanded', String(open)); };
+    pubMenu.onclick = () => setMenuOpen(!nav.classList.contains('open'));
+    nav.querySelectorAll('.links a').forEach((a) => a.addEventListener('click', () => setMenuOpen(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenuOpen(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 900) setMenuOpen(false); });
   }
   function renderFooter() {
     const el = $('#footer'); if (!el) return;
