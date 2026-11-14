@@ -1489,11 +1489,7 @@ color: var(--muted); }
 
 .pubnav .icon-btn { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); color: #fff; } .pubnav.solid .icon-btn { background: var(--surface); border-color: var(--line); color: var(--ink); } 
 
-@media (max-width: 640px) { 
-
- .pubnav .links { display: none; } 
-
- } 
+/* Public nav: the 900px-and-below mobile menu is defined at the end of this file. */ 
 
 
 
@@ -4413,3 +4409,65 @@ video {
     transition: none !important;
   }
 }
+
+/* =====================================================
+   19. LOGIN HISTORY (Settings) AND ADMIN TABS
+   ===================================================== */
+.actlist { list-style: none; margin: 0; padding: 0; } .actlist li { padding: 9px 0; border-bottom: 1px solid var(--line, rgba(128,128,128,.25)); font-size: .92rem; } .actlist li:last-child { border-bottom: 0; }
+.tabs2 { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; } .tabs2 button { cursor: pointer; }
+.tbl-wrap { overflow-x: auto; } .tbl2 { width: 100%; border-collapse: collapse; font-size: .9rem; } .tbl2 th, .tbl2 td { text-align: left; padding: 9px 10px; border-bottom: 1px solid rgba(128,128,128,.25); white-space: nowrap; }
+
+/* Search on the home page uses the hidden attribute; make sure cards really disappear. */
+#problem-grid [hidden] { display: none !important; }
+
+/* =====================================================
+   PUBLIC NAV - MOBILE MENU
+   Desktop shows the links inline. At 900px and below the
+   links collapse into a dropdown opened by the menu button.
+   ===================================================== */
+
+.pubnav .m-only { display: none; }
+.pub-menu-btn { display: none; }
+
+@media (max-width: 900px) {
+  .pub-menu-btn { display: inline-flex; }
+
+  .pubnav .links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+    padding: 10px 16px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, .18);
+  }
+
+  .pubnav.open .links { display: flex; }
+
+  .pubnav.open .links a,
+  .pubnav.solid .links a {
+    color: var(--ink);
+    padding: 12px 14px;
+  }
+
+  .pubnav.open .links a:hover,
+  .pubnav.solid .links a:hover {
+    background: var(--surface-2);
+  }
+
+  .pubnav .links .m-only { display: block; }
+}
+
+@media (max-width: 420px) {
+  .pubnav .wrap { gap: 10px; }
+  .pubnav .right .btn-glass,
+  .pubnav .right .btn-ghost { display: none; }
+}
+
+/* Keep hidden elements hidden everywhere, even when a class sets display. */
+[hidden] { display: none !important; }
