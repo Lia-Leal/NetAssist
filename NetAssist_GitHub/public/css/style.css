@@ -423,13 +423,15 @@ img, svg, video {
 
 .btn-glass { 
 
- background: rgba(255,255,255,.14); 
+ background: rgba(30, 64, 201, 0.14); 
 
  color: #fff; 
 
  border-color: rgba(255,255,255,.35); 
 
  backdrop-filter: blur(6px); 
+
+ box-shadow: 0 8px 22px rgba(92,92,255,.35); 
 
  } 
 
@@ -2376,7 +2378,15 @@ section.band { padding: 60px 0; } section.band.alt { background: var(--surface);
 
  } 
 
-.tests li { display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); align-items: center; } 
+.tests li { display: grid; 
+  grid-template-columns: 36px 1fr auto; 
+  gap: 12px; 
+  padding: 12px 14px; 
+  border: 1px solid var(--line); 
+  border-radius: 14px; 
+  background: var(--surface); 
+  align-items: center; 
+} 
 
 .tests .ti { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-2); color: var(--muted); } .tests .ti svg { width: 17px; height: 17px; } 
 
@@ -3713,8 +3723,6 @@ video {
 
  } 
 
-
-
  .auth-form .inner { 
 
  width: 100%; 
@@ -3760,13 +3768,11 @@ video {
  } 
 
 
-
  .wiz-actions .btn { 
 
  flex: 1 1 120px; 
 
  } 
-
 
 
  .footer .wrap { 
@@ -4471,3 +4477,39 @@ video {
 
 /* Keep hidden elements hidden everywhere, even when a class sets display. */
 [hidden] { display: none !important; }
+
+/* HEADER LOG IN: colored like the Sign up button */
+.pubnav .right a[href="/login"] {
+  background: linear-gradient(135deg, #7c4dff 0%, #22d3ee 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(124, 77, 255, .25);
+}
+
+.pubnav .right a[href="/login"]:hover {
+  filter: brightness(1.08);
+}
+
+/* BACK TO HISTORY: pill button instead of an underlined link */
+.no-print > a[href="/history"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+.no-print > a[href="/history"]:hover {
+  transform: translateX(-3px);
+  background: var(--grad);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(124, 77, 255, .3);
+}
