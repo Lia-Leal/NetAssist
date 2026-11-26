@@ -6,7 +6,7 @@
 .ap-box *, .ap-box *::before, .ap-box *::after { font-family: inherit; box-sizing: border-box; }
 .ap-close { position: absolute; top: 10px; right: 12px; width: 34px; height: 34px; display: grid; place-items: center; background: transparent; border: 0; color: #fff; cursor: pointer; border-radius: 50%; }
 .ap-close:hover { background: rgba(255, 255, 255, .18); } .ap-close svg { width: 20px; height: 20px; }
-.ap-form { display: none; } .ap-box[data-view="login"] .ap-form.login, .ap-box[data-view="register"] .ap-form.register, .ap-box[data-view="forgot"] .ap-form.forgot { display: block; }
+.ap-form { display: none; } .ap-box[data-view="login"] .ap-form.login, .ap-box[data-view="register"] .ap-form.register, .ap-box[data-view="forgot"] .ap-form.forgot, .ap-box[data-view="newpass"] .ap-form.newpass { display: block; }
 .ap-form h2 { text-align: center; font-size: 1.9rem; margin: 0 0 18px; color: #fff; }
 .ap-note { text-align: center; font-size: .88rem; margin: -6px 0 8px; opacity: .92; line-height: 1.5; }
 .ap-input { position: relative; height: 50px; margin: 24px 0; border-bottom: 2px solid rgba(255, 255, 255, .8); }
@@ -30,3 +30,43 @@
 .ap-hint { font-size: .78rem; opacity: .85; margin: -14px 0 12px; }
 @media (max-width: 400px) { .ap-box { padding: 30px 20px 24px; } .ap-row { font-size: .8rem; } }
 @media (prefers-reduced-motion: reduce) { .ap-overlay, .ap-box { transition: none; } }
+/* Terms & conditions (sign-up) */
+.ap-terms-title { font-weight: 600; font-size: .9rem; margin: 6px 0 6px; }
+.ap-terms-box { max-height: 150px; overflow-y: auto; padding: 10px 12px; font-size: .8rem; line-height: 1.5; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .35); border-radius: 8px; }
+.ap-terms-box:focus { outline: 2px solid #fff; outline-offset: 2px; }
+.ap-terms-box h4 { margin: 8px 0 3px; font-size: .84rem; }
+.ap-terms-box h4:first-child { margin-top: 0; }
+.ap-terms-box p { margin: 0 0 6px; }
+.ap-terms-hint { font-size: .76rem; margin: 6px 0 8px; opacity: .92; }
+.ap-agree { display: flex; align-items: flex-start; gap: 8px; font-size: .85rem; line-height: 1.4; cursor: pointer; margin: 0 0 14px; }
+.ap-agree input { width: 16px; height: 16px; margin-top: 2px; accent-color: #fff; flex: 0 0 auto; }
+.ap-agree.locked { opacity: .6; cursor: not-allowed; }
+.ap-agree input:disabled { cursor: not-allowed; }
+/* Terms & conditions popup (opened from the sign-up link) */
+.ap-tm { position: fixed; inset: 0; z-index: 410; display: grid; place-items: center; padding: 16px; background: rgba(10, 14, 50, .6); }
+.ap-tm[hidden] { display: none; }
+.ap-tm-box { box-sizing: border-box; width: min(480px, 100%); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 18px; color: #fff; background: #3d3385; border: 1px solid rgba(255, 255, 255, .4); border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, .35); }
+.ap-tm-box * { font-family: inherit; box-sizing: border-box; }
+.ap-tm-box h3 { margin: 0; font-size: 1.3rem; text-align: center; }
+.ap-tm-scroll { flex: 0 1 auto; min-height: 0; max-height: 300px; overflow-y: auto; padding: 12px 14px; font-size: .84rem; line-height: 1.55; background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .35); border-radius: 10px; }
+.ap-tm-scroll:focus { outline: 2px solid #fff; outline-offset: 2px; }
+.ap-tm-scroll h4 { margin: 10px 0 3px; font-size: .86rem; }
+.ap-tm-scroll h4:first-child { margin-top: 0; }
+.ap-tm-scroll p { margin: 0 0 6px; }
+.ap-tm-hint { margin: 0; font-size: .78rem; text-align: center; opacity: .9; }
+.ap-tm-actions { display: flex; gap: 10px; }
+.ap-tm-btn { flex: 1; height: 44px; border: 0; border-radius: 8px; background: #fff; color: #30205c; font-size: .95rem; font-weight: 600; cursor: pointer; transition: .25s; }
+.ap-tm-btn:hover { background: #ded7ff; }
+.ap-tm-btn:disabled { opacity: .5; cursor: not-allowed; }
+.ap-tm-btn.ghost { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .6); }
+.ap-tm-btn.ghost:hover { background: rgba(255, 255, 255, .15); }
+/* Agree row with the link */
+.ap-agree { display: flex; align-items: flex-start; gap: 8px; font-size: .85rem; line-height: 1.4; margin: 0 0 14px; }
+.ap-agree input { width: 16px; height: 16px; margin-top: 2px; accent-color: #fff; flex: 0 0 auto; }
+.ap-agree label { cursor: pointer; }
+.ap-agree a { color: #fff; font-weight: 600; }
+.ap-agree.locked label { cursor: not-allowed; opacity: .6; }
+.ap-agree input:disabled { cursor: not-allowed; }
+
+/* Forgot password: new password step */
+.ap-confirm { font-size: .85rem; line-height: 1.5; margin: 4px 0 16px; padding: 10px 12px; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .35); border-radius: 8px; }
